@@ -1,0 +1,139 @@
+{
+    "extends": [
+        "airbnb",
+        "airbnb-typescript",
+        "plugin:regexp/all",
+        "plugin:github/browser",
+        "plugin:import/typescript",
+        "plugin:react/recommended",
+        "plugin:import/recommended",
+        "plugin:compat/recommended",
+        "plugin:promise/recommended",
+        "plugin:unicorn/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:@typescript-eslint/strict",
+        "plugin:eslint-comments/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "plugins": [
+        "@typescript-eslint",
+        "eslint-comments",
+        "react-hooks",
+        "toplevel",
+        "jsx-a11y",
+        "promise",
+        "unicorn",
+        "compat",
+        "github",
+        "regexp",
+        "import",
+        "react"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            }
+        }
+    },
+    "root": true,
+    "env": {
+        "browser": true,
+        "es2022": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "tsconfig.eslint.json",
+        "tsconfigRootDir": ".",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "ignorePatterns": [
+        "dist/*"
+    ],
+    "rules": {
+        // "no-console": "error",
+        // "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/non-nullable-type-assertion-style": "off",
+        "toplevel/no-toplevel-let": "warn",
+        "toplevel/no-toplevel-side-effect": "warn",
+        "regexp/prefer-named-capture-group": "off",
+        "react/react-in-jsx-scope": "off",
+        "unicorn/prevent-abbreviations": "off",
+        "import/prefer-default-export": "off",
+        "import/no-default-export": "error",
+        "@typescript-eslint/consistent-type-imports": "warn",
+        "unicorn/filename-case": [
+            "error",
+            {
+                "case": "kebabCase",
+                "ignore": [
+                    ".tsx$",
+                    "setupTests"
+                ]
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "external",
+                    "builtin",
+                    "index",
+                    "sibling",
+                    "parent",
+                    "internal",
+                    "type"
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                },
+                "newlines-between": "never"
+            }
+        ],
+        "@typescript-eslint/no-empty-interface": "off"
+    },
+    "overrides": [
+        {
+            "files": [
+                "vite.config.ts",
+                "setupTests.ts"
+            ],
+            "rules": {
+                "import/no-default-export": "off",
+                "import/no-extraneous-dependencies": "off"
+            }
+        },
+        {
+            "files": [
+                "**/__tests__/**/*.[jt]s?(x)",
+                "**/?(*.)+(spec|test).[jt]s?(x)"
+            ],
+            "extends": [
+                "plugin:vitest/recommended",
+                "plugin:jest-dom/recommended",
+                "plugin:testing-library/react",
+                "plugin:jest-formatting/recommended"
+            ],
+            "plugins": [
+                "vitest",
+                "jest-dom",
+                "testing-library",
+                "jest-formatting"
+            ],
+            "rules": {
+                "toplevel/no-toplevel-side-effect": "off",
+                "import/no-extraneous-dependencies": "off"
+            }
+        }
+    ]
+}
